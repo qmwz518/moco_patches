@@ -126,6 +126,7 @@ class MoCo(nn.Module):
         q = nn.functional.normalize(q, dim=1)
 
         # compute key features
+        '''
         with torch.no_grad():  # no gradient to keys
             self._momentum_update_key_encoder()  # update the key encoder
 
@@ -137,7 +138,7 @@ class MoCo(nn.Module):
 
             # undo shuffle
             k = self._batch_unshuffle_ddp(k, idx_unshuffle)
-
+        '''
         # compute logits
         # Einstein sum is more intuitive
         # positive logits: Nx1
